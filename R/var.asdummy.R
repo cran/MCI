@@ -5,8 +5,8 @@ x_fac <- as.factor(x)
 lev <- levels(x_fac)   
 x_count <- nlevels(x_fac)   
 dummyvarnames <- list()   
-
 dummyname <- 0   
+
 for (i in 1:x_count) {   
 dummyname[i] <- paste (lev[i],"_DUMMY", sep="")
 dummyvarnames <- rbind(dummyvarnames, dummyname[i])
@@ -19,6 +19,5 @@ for (i in 1:x_count) {
 positionstrue <- which(x_fac == lev[i])
 dummydataset[positionstrue,i] <- 1
 }
-
 return(dummydataset)
 }

@@ -20,8 +20,8 @@ Results from a POS survey in Goettingen (Germany) from June 2015 (raw data). Amo
 }
 
 \source{
-Wieland, T. (2011): \dQuote{Nahversorgung mit Lebensmitteln in Goettingen 2011 - Eine Analyse der Angebotssituation im Goettinger Lebensmitteleinzelhandel unter besonderer Beruecksichtigung der Versorgungsqualitaet}. \emph{Goettinger Statistik Aktuell}, \bold{35}. Goettingen. 
-URL: \emph{http://www.goesis.goettingen.de/pdf/Aktuell35.pdf}
+Wieland, T. (2011): \dQuote{Nahversorgung mit Lebensmitteln in Goettingen 2011 - Eine Analyse der Angebotssituation im Goettinger Lebensmitteleinzelhandel unter besonderer Beruecksichtigung der Versorgungsqualitaet}. \emph{Goettinger Statistik Aktuell}, \bold{35}. Goettingen.
+\url{http://www.goesis.goettingen.de/pdf/Aktuell35.pdf}
 
 Primary empirical sources:
 POS (point of sale) survey in the authors' course (\dQuote{Seminar Angewandte Geographie 1: Stadtentwicklung und Citymarketing an einem konkreten Fallbeispiel}, University of Goettingen/Institute of Geography, June 2015), own calculations
@@ -38,4 +38,3 @@ ijmatrix.create (grocery1, "plz_submarket", "store_code")
 # Creates an interaction table with local market shares 
 }
 
-\keyword{datasets}

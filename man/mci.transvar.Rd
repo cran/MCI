@@ -7,13 +7,13 @@ Log-centering transformation of one variable in an interaction matrix
 This function applies the \emph{log-centering transformation} on a variable in a given MCI interaction matrix.
 }
 \usage{
-mci.transvar(mcidataset, submarkets, suppliers, mcivariable, 
+mci.transvar (mcidataset, submarkets, suppliers, mcivariable, 
 output_ij = FALSE, output_var = "numeric")
 }
 
 \arguments{
   \item{mcidataset}{
-an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers and the regarded variables (e.g. the observed market shares, \emph{p_ij}, and the explanatory variables)
+an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers and the regarded variables (e.g. the observed market shares, \eqn{p_{ij}}, and the explanatory variables)
 }
   \item{submarkets}{
 the column in the interaction matrix \code{mcidataset} containing the submarkets, should usually be a factor
@@ -53,14 +53,15 @@ Thomas Wieland
 \code{\link{mci.fit}}, \code{\link{mci.transmat}}
 }
 \examples{
-data(grocery2)
+data(ce)
 # Loads the data
-mci.transvar (grocery2, "plz_submarket", "store_code", "p_ij_obs", output_ij=TRUE)
-# Output: submarkets (zipcodes), store codes and transformation of "p_ij_obs"
 
-mci.transvar (grocery2, "plz_submarket", "store_code", "p_ij_obs")
-# Output: a numeric vector containing the transformated values of "p_ij_obs"
+mci.transvar (ce, "origin_code", "store_code", "ms_obs", output_ij=TRUE)
+# Output: submarkets (origins), store codes and transformations of "ms_obs"
 
-transf_mcivar <- mci.transvar (grocery2, "plz_submarket", "store_code", "p_ij_obs", output_ij=TRUE)
+mci.transvar (ce, "origin_code", "store_code", "ms_obs")
+# Output: a numeric vector containing the transformated values of "ms_obs"
+
+transf_mcivar <- mci.transvar (ce, "origin_code", "store_code", "ms_obs", output_ij=TRUE)
 # Save in a new data frame called "transf_mcivar"
 }

@@ -20,7 +20,7 @@ boolean argument that indicates if a character vector should be regarded as to b
 }
 }
 \details{
-In the MCI model, only numeric variables with values greater than zero are accepted (From the theoretical perspective, a zero or negative attractivity/utility is just as impossible as zero or negative market shares. In the log-centering transformation, those values cannot be processed.). This function tests a variable if it matches those standards. 
+In the MCI model, only numeric variables with values greater than zero are accepted (From the theoretical perspective, a zero or negative attractivity/utility is just as impossible as zero or negative market shares. In the log-centering transformation, those values cannot be processed.). This function tests a variable if it matches these standards. 
 }
 \value{
 Returns a character value depending on the test result: \code{"valid_n"} indicates that the variable is valid for MCI analyzes. Otherwise it contains zero/and or negative values (\code{"invalid_zn"}) or character values (\code{"invalid_s"}). If \code{asdummy = TRUE}, a character variable is tested as \code{"asdummy"}.

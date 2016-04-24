@@ -17,7 +17,7 @@ A character vector
 }
 }
 \details{
-In MCI analyzes (as in OLS regression models generally) only \emph{quantitative} information (that means: numeric) is allowed. \emph{Qualitative} information (e.g. brands, companies, retail chains) can be added using dummy variables [1,0]. This function transforms a character vector \code{x} with \emph{c} characteristics to a set of \emph{c} dummy variables whose column names correspond to these characteristics marked with \dQuote{_DUMMY}.    
+In MCI analyzes (as in OLS regression models generally) only \emph{quantitative} information (that means: numeric) is allowed. \emph{Qualitative} information (e.g. brands, companies, retail chains) can be added using dummy variables [1,0]. This function transforms a character vector \code{x} with \eqn{c} characteristics to a set of \eqn{c} dummy variables whose column names correspond to these characteristics marked with \dQuote{_DUMMY}.    
 }
 \value{
 A \code{data.frame} with dummy variables corresponding to the levels of the input variable.

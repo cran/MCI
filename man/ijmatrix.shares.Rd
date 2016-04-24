@@ -26,7 +26,7 @@ the column with the regarded variable (e.g. frequencies, expenditures, turnovers
 }
 }
 \details{
-This function calculates the market shares of every \emph{j} in every \emph{i} (\emph{p_ij}) based on an existing interaction matrix. In the MCI model the dependent variable is the market share of the \emph{j} suppliers in the \emph{i} submarkets, in which the shares are \emph{logically consistent} (that means: 0 < \emph{p_ij} < 1, sum of \emph{p_ij} = 1).
+This function calculates the market shares of every \eqn{j} in every \eqn{i} (\eqn{p_{ij}}) based on an existing interaction matrix. In the MCI model the dependent variable is the market share of the \eqn{j} suppliers in the \eqn{i} submarkets, in which the shares are \emph{logically consistent} (that means: 0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}).
 }
 \value{
 The input interaction matrix which is a \code{data.frame} with a new column \code{'p_ij_obs'} or, if used after \code{\link{ijmatrix.create}}, an update of the columns \code{'freq_i_total'} and \code{'p_ij_obs'}.

@@ -5,7 +5,7 @@
 Grocery store market areas in Goettingen
 }
 \description{
-Market areas of grocery stores in Goettingen, generated from a POS survey in Goettingen (Germany) from June 2015. The survey dataset contains 224 cases (\emph{i} = 7 submarkets x \emph{j} = 32 suppliers). The data is the result of a survey that is \emph{not} representative (see \emph{grocery1}) and also biased due to the data preparation. The data should be regarded as an example.
+Market areas of grocery stores in Goettingen, generated from a POS survey in Goettingen (Germany) from June 2015. The survey dataset contains 224 cases (\eqn{i} = 7 submarkets x \eqn{j} = 32 suppliers). The data is the result of a survey that is \emph{not} representative (see \emph{grocery1}) and also biased due to the data preparation. The data should be regarded as an example.
 }
 \usage{data("grocery2")}
 \format{
@@ -20,15 +20,16 @@ Market areas of grocery stores in Goettingen, generated from a POS survey in Goe
     \item{\code{salesarea_qm}}{a numeric vector for the sales area of the grocery stores in sqm, data from Wieland (2011)}
     \item{\code{pricelevel_euro}}{a numeric vector for the price level of the grocery chain (standardized basket in EUR), based on the data from DISQ (2015)}
     \item{\code{dist_km}}{a numeric vector for the distance from the places of residence (ZIP codes) to the grocery stores in km}
-    \item{\code{p_ij_obs}}{a numeric vector for the observed (and corrected) market shares (\emph{p_ij}) of the stores in the submarkets}
+    \item{\code{p_ij_obs}}{a numeric vector for the empirically observed (and corrected) market shares (\eqn{p_{ij}}) of the stores in the submarkets}
   }
 }
 
 \source{
-DISQ (Deutsches Institut fuer Servicequalitaet) (2015) \dQuote{Discounter guenstig, Vollsortimenter serviceorientiert. Studie Lebensmittelmaerkte (15.10.2015)}. URL: \emph{http://disq.de/2015/20151015-Lebensmittelmaerkte.html}
+DISQ (Deutsches Institut fuer Servicequalitaet) (2015) \dQuote{Discounter guenstig, Vollsortimenter serviceorientiert. Studie Lebensmittelmaerkte (15.10.2015)}. 
+\url{http://disq.de/2015/20151015-Lebensmittelmaerkte.html}
 
 Wieland, T. (2011): \dQuote{Nahversorgung mit Lebensmitteln in Goettingen 2011 - Eine Analyse der Angebotssituation im Goettinger Lebensmitteleinzelhandel unter besonderer Beruecksichtigung der Versorgungsqualitaet}. \emph{Goettinger Statistik Aktuell}, \bold{35}. Goettingen. 
-URL: \emph{http://www.goesis.goettingen.de/pdf/Aktuell35.pdf}
+\url{http://www.goesis.goettingen.de/pdf/Aktuell35.pdf}
 
 Primary empirical sources:
 POS (point of sale) survey in the authors' course (\dQuote{Seminar Angewandte Geographie 1: Stadtentwicklung und Citymarketing an einem konkreten Fallbeispiel}, University of Goettingen/Institute of Geography, June 2015), own calculations

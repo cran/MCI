@@ -1,6 +1,5 @@
 var.check <-
 function(x, asdummy=FALSE) {
-
 if (class(x) == "character")   
 {
 if (asdummy==FALSE) {   

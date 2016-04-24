@@ -14,7 +14,7 @@ mci.transmat(mcidataset, submarkets, suppliers, mcivariable1, ...)
 
 \arguments{
   \item{mcidataset}{
-an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers and the regarded variables (e.g. the observed market shares, \emph{p_ij}, and the explanatory variables)
+an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers and the regarded variables (e.g. the observed market shares, \eqn{p_{ij}}, and the explanatory variables)
 }
   \item{submarkets}{
 the column in the interaction matrix \code{mcidataset} containing the submarkets, should usually be a factor
@@ -30,7 +30,7 @@ the columns of other variables to be transformed, numeric and positive (or dummy
 }
 }
 \details{
-The input dataset is transformed to regression-ready data with the \emph{log-centering transformation} by Nakanishi/Cooper (1974). The resulting \code{data.frame} can be fitted with the base \code{lm()} function (to combine these two steps in one, use \code{mci.fit()}). The \emph{log-centering transformation} can be regarded as the key concept of the MCI model because it enables the model to be estimated by OLS (ordinary least squares) regression. The function identifies dummy variables which are not transformend (because they do not have to be). 
+The input dataset is transformed to regression-ready data with the \emph{log-centering transformation} by Nakanishi/Cooper (1974). The resulting \code{data.frame} can be fitted with the \code{lm()} function (to combine these two steps in one, use \code{mci.fit()}). The \emph{log-centering transformation} can be regarded as the key concept of the MCI model because it enables the model to be estimated by OLS (ordinary least squares) regression. The function identifies dummy variables which are not transformend (because they do not have to be). 
 }
 \value{
 Returns a new \code{data.frame} with regression-ready data where the input variables are transformed by the the \emph{log-centering transformation}. The names of the input variables are passed to the new \code{data.frame} marked with a "_t" to indicate that they were transformed (e.g. "shares_t" is the transformation of "shares").
@@ -50,12 +50,14 @@ Thomas Wieland
 \code{\link{mci.fit}}, \code{\link{mci.transvar}}
 }
 \examples{
-data(grocery2)
+data(ce)
 # Loads the data
-mci.transmat (grocery2, "plz_submarket", "store_code", "p_ij_obs", "dist_km", "salesarea_qm")
-# Output: submarkets (zipcodes), store codes and transformations
-# of "p_ij_obs", "dist_km" and "salesarea_qm"
+mci.transmat (ce, "origin_code", "store_code", "ms_obs", "traveltime", "salesarea", 
+"conc_all", "conc_comp")
+# Output: submarkets (origins), store codes and transformations
+# of "ms_obs", "traveltime", "salesarea", "conc_all" and "conc_comp"
 
-transf_mcimat <- mci.transmat (grocery2, "plz_submarket", "store_code", "p_ij_obs", "dist_km")
+transf_mcimat <- mci.transmat (ce, "origin_code", "store_code", "ms_obs", "traveltime", 
+"salesarea", "conc_all", "conc_comp")
 # Save in a new data frame called "transf_mcimat"
 }

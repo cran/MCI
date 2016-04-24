@@ -9,13 +9,10 @@ addmcivariablelog <- data.frame(matrix(0, nrow=mcidataset_rows, ncol=addmcivars_
 varname <- character()
 
 for (v in 1:addmcivars_count) {
-
 varname <- addmcivars[[v]]
 addmcivariablelog[v] <- mci.transvar (mcidataset, submarkets, suppliers, varname, output_ij=FALSE)
 colnames(addmcivariablelog)[v] <- paste(varname, "_t", sep="")
 }
-
 mcilinoutput <- data.frame(mcivariablelog1, addmcivariablelog)
-
 return(mcilinoutput)
 }

@@ -12,11 +12,12 @@ mcirawdata$interaction <- paste(mcirawdata[[submarkets]], "-", mcirawdata[[suppl
 interactions <- mcirawdata$interaction
 interactions_count <- as.data.frame(table(interactions))
 names(interactions_count) <- c("interaction", "freq_ij_abs")
+
 mciworkfile <- merge (matrix_ij, interactions_count, by="interaction", all=TRUE)
 mciworkfile$freq_ij_abs[is.na(mciworkfile$freq_ij_abs)] <- 0
+
 submarkets_count <- nlevels(as.factor(mcirawdata[[submarkets]]))   
 suppliers_count <- nlevels(as.factor(mcirawdata[[suppliers]]))   
-
 p_ij_obs <- vector()
 freq_ij_rel <- vector()
 freq_i_abs <- vector()

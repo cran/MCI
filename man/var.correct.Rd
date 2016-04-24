@@ -55,5 +55,5 @@ var.correct(var1)
 var2 <- -5:5
 # a vector with zero/negative values
 var.correct(var2, auto = TRUE)
-# returns a vector with minimum value = 1
+# returns a vector with minimum value equal to 1
 }
