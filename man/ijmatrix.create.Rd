@@ -17,10 +17,10 @@ ijmatrix.create(rawdataset, submarkets, suppliers)
 a \code{data.frame} containing the raw data
 }
   \item{submarkets}{
-the column in the dataset containing the submarkets (e.g. ZIP codes), should be a factor
+the column in the dataset containing the submarkets (e.g. ZIP codes)
 }
   \item{suppliers}{
-the column in the dataset containing the suppliers (e.g. store codes), should be a factor 
+the column in the dataset containing the suppliers (e.g. store codes) 
 }
 }
 \details{

@@ -4,7 +4,7 @@
 Log-centering transformation of one variable in an interaction matrix
 }
 \description{
-This function applies the \emph{log-centering transformation} on a variable in a given MCI interaction matrix.
+This function applies the \emph{log-centering transformation} to a variable in a given MCI interaction matrix.
 }
 \usage{
 mci.transvar (mcidataset, submarkets, suppliers, mcivariable, 
@@ -16,16 +16,16 @@ output_ij = FALSE, output_var = "numeric")
 an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers and the regarded variables (e.g. the observed market shares, \eqn{p_{ij}}, and the explanatory variables)
 }
   \item{submarkets}{
-the column in the interaction matrix \code{mcidataset} containing the submarkets, should usually be a factor
+the column in the interaction matrix \code{mcidataset} containing the submarkets
 }
   \item{suppliers}{
-the column in the interaction matrix \code{mcidataset} containing the suppliers, should usually be a factor
+the column in the interaction matrix \code{mcidataset} containing the suppliers
 }
   \item{mcivariable}{
 the column of the variable to be transformed, numeric and positive (or dummy [1,0])
 }
   \item{output_ij}{
-boolean argument that indicates if the function output has to be a \code{data.frame} with three columns (submarkets, suppliers, transformed variable) or a vector only with the transformed values (default is \code{output_ij = FALSE})
+logical argument that indicates if the function output has to be a \code{data.frame} with three columns (submarkets, suppliers, transformed variable) or a vector only with the transformed values (default is \code{output_ij = FALSE})
 }
   \item{output_var}{
 defines the mode of the function output if \code{output_ij = FALSE} (default is \code{output_var = "numeric"}, otherwise \code{"list"})

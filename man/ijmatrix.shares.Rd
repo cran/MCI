@@ -16,10 +16,10 @@ ijmatrix.shares(rawmatrix, submarkets, suppliers, observations)
 a \code{data.frame} containing the submarkets, suppliers and the observed data
 }
   \item{submarkets}{
-the column in the dataset containing the submarkets (e.g. ZIP codes), should be a factor
+the column in the dataset containing the submarkets (e.g. ZIP codes)
 }
   \item{suppliers}{
-the column in the dataset containing the suppliers (e.g. store codes), should be a factor
+the column in the dataset containing the suppliers (e.g. store codes)
 }
   \item{observations}{
 the column with the regarded variable (e.g. frequencies, expenditures, turnovers)

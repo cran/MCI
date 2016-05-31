@@ -19,11 +19,11 @@ a numeric vector
 value to increase the values with (default \code{ = 1})
 }
   \item{auto}{
-boolean argument (default \code{auto = FALSE}) if invalid values are increased automatically by the absolute value of the minimum + incby
+logical argument (default \code{auto = FALSE}) if invalid values are increased automatically by the absolute value of the minimum + incby
 }
 }
 \details{
-In the MCI model, only numeric variables with values greater than zero are accepted (From the theoretical perspective, a zero or negative attractivity/utility is just as impossible as zero or negative market shares. In the log-centering transformation, those values cannot be processed.). This function corrects a numeric variable with zero and/or negative values. The most frequent case is that some market shares are equal to zero and are increased by 1. 
+In the MCI model, only numeric variables with values greater than zero are accepted (From the theoretical perspective, a zero or negative attractivity/utility is just as impossible as negative market shares. In the log-centering transformation, those values cannot be processed.). This function corrects a numeric variable with zero and/or negative values. The most frequent case is that some market shares (or absolute values) are equal to zero and are increased by 1. 
 }
 \value{
 Returns a numeric vector with the corrected values.
@@ -48,7 +48,7 @@ Thomas Wieland
 
 \examples{
 var1 <- c(11, 17.5, 24.1, 0.9, 21.2, 0)
-# a vector containg one zero value
+# a vector containing one zero value
 var.correct(var1)
 # returns a vector with input values increased by 1
 

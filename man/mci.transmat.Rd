@@ -5,7 +5,7 @@
 Log-centering transformation of an interaction matrix
 }
 \description{
-This function applies the \emph{log-centering transformation} on the variables in a given MCI interaction matrix.
+This function applies the \emph{log-centering transformation} to the variables in a given MCI interaction matrix.
 }
 
 \usage{
@@ -17,10 +17,10 @@ mci.transmat(mcidataset, submarkets, suppliers, mcivariable1, ...)
 an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers and the regarded variables (e.g. the observed market shares, \eqn{p_{ij}}, and the explanatory variables)
 }
   \item{submarkets}{
-the column in the interaction matrix \code{mcidataset} containing the submarkets, should usually be a factor
+the column in the interaction matrix \code{mcidataset} containing the submarkets
 }
   \item{suppliers}{
-the column in the interaction matrix \code{mcidataset} containing the suppliers, should usually be a factor
+the column in the interaction matrix \code{mcidataset} containing the suppliers
 }
   \item{mcivariable1}{
 the column of the first variable to be transformed, numeric and positive (or dummy [1,0])

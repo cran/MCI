@@ -28,14 +28,14 @@ the column in the interaction matrix \code{mcidataset} containing the observed m
 the column(s) of the explanatory variable(s) (at least one), numeric and positive (or dummy [1,0])
 }
   \item{origin}{
-boolean argument that indicates if an intercept is included in the model or it is a regression through the origin (default \code{origin = TRUE})
+logical argument that indicates if an intercept is included in the model or it is a regression through the origin (default \code{origin = TRUE})
 }
 }
 \details{
 The input dataset is transformed to regression-ready-data with the \emph{log-centering transformation} by Nakanishi/Cooper (1974) and the data is fitted by a linear regression model. The return of the function \code{mci.fit()} can be treated exactly like the output of the \code{lm()} function. In the MCI model the dependent variable is the market share of the \eqn{j} suppliers in the \eqn{i} submarkets (\eqn{p_{ij}}), in which the shares are \emph{logically consistent} (that means: 0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}). The column in the interaction matrix \code{mcidataset} containing the shares is the 4th parameter of the function (\code{shares}). The further arguments (\code{...}) are the columns with the explanatory variables (attractivity/utility values of the \eqn{j} alternatives, characteristics of the submarkets \eqn{i}). The function identifies dummy variables which are not transformend (because they do not have to be). Normally, in MCI analyzes no intercept is included into the transformed linear model due to the requirement of logically consistent market shares as model results (see above), so the default is a regression through the origin (\code{origin = TRUE}). Note: If an intercept is included (\code{origin = FALSE}) (and also if dummy variables are used as explanatories), the \emph{inverse log-centering transformation} by Nakanishi/Cooper (1982) has to be used for simulations.   
 }
 \value{
-The linear regression is executed by the \code{lm()} function, so \code{mci.fit()} returns an object of class \code{lm}. The full information (estimates, significance, R-squared etc.) can be adressed by the function \code{summary()}. The explanatory variables are marked with a "_t" to indicate that they were transformed by log-centering transformation.
+The function \code{mci.fit()} returns an object of class \code{lm}. The full information (estimates, significance, R-squared etc.) can be adressed by the function \code{summary()}. The explanatory variables are marked with a "_t" to indicate that they were transformed by log-centering transformation.
 }
 \references{
 Colome Perales, R. (2002): \dQuote{Consumer Choice in Competitive Location Models}. Barcelona.

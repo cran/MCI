@@ -16,7 +16,7 @@ Market areas of five consumer electronic (CE) stores in a german study area and 
     \item{\code{ms_obs}}{a numeric vector for the empirically observed market shares (\eqn{p_{ij}}) of the CE stores in the submarkets}
     \item{\code{traveltime}}{a numeric vector for the transport costs (travel time in minutes) between the places of residence and the stores}
     \item{\code{salesarea}}{a numeric vector for the sales area of the CE stores in sqm}
-    \item{\code{conc_all}}{a numeric vector that reflects the spatial concentration (or rate of agglomeration) of the single store regarding other (non-competitive) retail stores, based on the \emph{Hansen accessibility}}
+    \item{\code{conc_all}}{a numeric vector that reflects the spatial concentration (or rate of agglomeration) of the single store regarding other (non-competitive) retail stores (e.g. grocery, clothing, DIY), based on the \emph{Hansen accessibility}}
     \item{\code{conc_comp}}{a numeric vector that reflects the spatial concentration (or rate of agglomeration) of the single store regarding competing retail stores (other CE stores), based on the \emph{Hansen accessibility}}
   }
 }
