@@ -2,7 +2,7 @@
 \alias{var.asdummy}
 
 \title{
-Creates dummy variables
+Creating dummy variables
 }
 \description{
 This function creates a dataset of dummy variables based on an input character vector.

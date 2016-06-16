@@ -45,3 +45,5 @@ data(grocery2)
 mci.transmat (grocery2, "plz_submarket", "store_code", "p_ij_obs", "dist_km", "salesarea_qm")
 # Applies the log-centering transformation to the dataset using the function mci.transmat
 }
+
+\keyword{datasets}

@@ -38,3 +38,4 @@ ijmatrix.create (grocery1, "plz_submarket", "store_code")
 # Creates an interaction table with local market shares 
 }
 
+\keyword{datasets}

@@ -5,7 +5,7 @@
 Fitting the MCI model
 }
 \description{
-This function fits the MCI model based on an interaction matrix.   
+This function fits the MCI model based on a given MCI interaction matrix.   
 }
 \usage{
 mci.fit(mcidataset, submarkets, suppliers, shares, ..., origin = TRUE)

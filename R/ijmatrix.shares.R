@@ -16,14 +16,10 @@ function (rawmatrix, submarkets, suppliers, observations) {
   submarket_i_total <- 0
   
   for(i in 1:submarkets_count){   
-
     submarket_i <- subset (mcirawmatrix, mcirawmatrix[[submarkets_colname]] == submarkets_single[i])  
     submarket_i_total[i] <- sum (submarket_i[[observations]])
-
     for(j in 1:suppliers_count) {   
-
       freq_ij_rel_j[j] <- submarket_i[[observations]][j]/submarket_i_total[i]
-      
       freq_i_abs <- rbind(freq_i_abs, as.numeric(list(submarket_i_total[i])))
       
     }   

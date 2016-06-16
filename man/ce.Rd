@@ -37,3 +37,5 @@ mymcimodel <- mci.fit (ce, "origin_code", "store_code", "ms_obs", "traveltime",
 summary(mymcimodel)
 # Summary of the model
 }
+
+\keyword{datasets}
