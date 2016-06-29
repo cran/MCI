@@ -1,19 +1,33 @@
 mci.transvar <-
-function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, output_var = "numeric") {   
+function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, 
+                          output_var = "numeric", check_df = TRUE) 
+{   
 
+  if (check_df == TRUE) 
+  {
+    if (exists(as.character(substitute(mcidataset)))) { 
+      checkdf(mcidataset, submarkets, suppliers, mcivariable)
+    }
+    else {
+      stop(paste("Dataset", as.character(substitute(mcidataset))), " not found", call. = FALSE)
+    }
+  }
+    
+    
   sort_i_j <- order(mcidataset[[submarkets]], mcidataset[[suppliers]])
 
   mciworkfile <- mcidataset[sort_i_j,]   
 
-  if (var.check(mciworkfile[[mcivariable]]) == "valid_d") {
+  if (checkvar(mciworkfile[[mcivariable]]) == "valid_d") {
+    cat(names(mciworkfile[mcivariable]), "is treated as dummy variable (no log-centering transformation) \n")
 
     return(mciworkfile[mcivariable]) 
-
   }
   
-  if (var.check(mciworkfile[[mcivariable]]) == "valid_n") {
+  if (checkvar(mciworkfile[[mcivariable]]) == "valid_n") {
 
     logvarnewname <- paste(names(mciworkfile[mcivariable]), "_t", sep="")   
+
     submarkets_single <- levels(as.factor(mciworkfile[[submarkets]]))   
     suppliers_single <- levels(as.factor(mciworkfile[[suppliers]]))
     submarkets_count <- nlevels(as.factor(mciworkfile[[submarkets]]))
@@ -22,6 +36,7 @@ function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, out
     submarket_i_geom <- 0   
     submarket_i_rel <- 0   
     submarket_i_rel_log <- 0   
+
     mcivariablelog <- vector()  
 
     for(i in 1:submarkets_count){   
@@ -39,10 +54,12 @@ function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, out
     
     mcilinvar <- as.data.frame(mcivariablelog)   
     names(mcilinvar) <- logvarnewname   
- 
+
     if (output_ij == TRUE) {
       mcilinoutput <- cbind(mciworkfile[submarkets], mciworkfile[suppliers], mcilinvar)
+      
       if (output_var == "numeric") { mcilinoutput[3] <- as.numeric(unlist(mcilinoutput[3])) } 
+      
       return(mcilinoutput)
     }
     else {
@@ -51,7 +68,15 @@ function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, out
     }
   }   
   else {
-    return(0)
+    if (checkvar(mciworkfile[[mcivariable]]) == "invalid_s")
+    {
+      stop(paste("Variable", names(mciworkfile[mcivariable]), "is invalid (contains strings) \n"), call. = FALSE)
+    }
+    
+    if (checkvar(mciworkfile[[mcivariable]]) == "invalid_zn")
+    {
+      stop(paste("Variable", names(mciworkfile[mcivariable]), "is invalid (contains zero and/or negative values) \n"), call. = FALSE)
+    }
   }   
- 
+
 }

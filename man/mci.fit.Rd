@@ -32,7 +32,7 @@ logical argument that indicates if an intercept is included in the model or it i
 }
 }
 \details{
-The input dataset is transformed to regression-ready-data with the \emph{log-centering transformation} by Nakanishi/Cooper (1974) and the data is fitted by a linear regression model. The return of the function \code{mci.fit()} can be treated exactly like the output of the \code{lm()} function. In the MCI model the dependent variable is the market share of the \eqn{j} suppliers in the \eqn{i} submarkets (\eqn{p_{ij}}), in which the shares are \emph{logically consistent} (that means: 0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}). The column in the interaction matrix \code{mcidataset} containing the shares is the 4th parameter of the function (\code{shares}). The further arguments (\code{...}) are the columns with the explanatory variables (attractivity/utility values of the \eqn{j} alternatives, characteristics of the submarkets \eqn{i}). The function identifies dummy variables which are not transformend (because they do not have to be). Normally, in MCI analyzes no intercept is included into the transformed linear model due to the requirement of logically consistent market shares as model results (see above), so the default is a regression through the origin (\code{origin = TRUE}). Note: If an intercept is included (\code{origin = FALSE}) (and also if dummy variables are used as explanatories), the \emph{inverse log-centering transformation} by Nakanishi/Cooper (1982) has to be used for simulations.   
+The input dataset is transformed to regression-ready-data with the \emph{log-centering transformation} by Nakanishi/Cooper (1974) and the data is fitted by a linear regression model. The return of the function \code{mci.fit()} can be treated exactly like the output of the \code{lm()} function. In the MCI model the dependent variable is the market share of the \eqn{j} suppliers in the \eqn{i} submarkets (\eqn{p_{ij}}), in which the shares are \emph{logically consistent} (that means: 0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}). The column in the interaction matrix \code{mcidataset} containing the shares is the 4th parameter of the function (\code{shares}). The further arguments (\code{...}) are the columns with the explanatory variables (attractivity/utility values of the \eqn{j} alternatives, characteristics of the \eqn{i} submarkets). The function identifies dummy variables which are not transformed (because they do not have to be). Normally, in MCI analyzes no intercept is included into the transformed linear model due to the requirement of logically consistent market shares as model results (see above), so the default is a regression through the origin (\code{origin = TRUE}). Note: If an intercept is included (\code{origin = FALSE}) (and also if dummy variables are used as explanatories), the \emph{inverse log-centering transformation} by Nakanishi/Cooper (1982) has to be used for simulations.   
 }
 \value{
 The function \code{mci.fit()} returns an object of class \code{lm}. The full information (estimates, significance, R-squared etc.) can be adressed by the function \code{summary()}. The explanatory variables are marked with a "_t" to indicate that they were transformed by log-centering transformation.
@@ -40,7 +40,11 @@ The function \code{mci.fit()} returns an object of class \code{lm}. The full inf
 \references{
 Colome Perales, R. (2002): \dQuote{Consumer Choice in Competitive Location Models}. Barcelona.
 
+Gonzalez-Benito, O./Greatorex, M./Munos-Gallego, P. A. (2000): \dQuote{Assessment of potential retail segmentation variables - An approach based on a subjective MCI resource allocation model}. In: \emph{Journal of Retailing and Consumer Services}, \bold{7}, 3, p. 171-179.
+
 Hartmann, M. (2005): \dQuote{Gravitationsmodelle als Verfahren der Standortanalyse im Einzelhandel}. \emph{Statistik Regional Electronic Papers}, \bold{02/2005}. Halle.
+
+Huff, D. L./Batsell, R. R. (1975): \dQuote{Conceptual and Operational Problems with Market Share Models of Consumer Spatial Behavior}. In: \emph{Advances in Consumer Research}, \bold{2}, p. 165-172.
 
 Huff, D. L./McCallum, D. (2008): \dQuote{Calibrating the Huff Model Using ArcGIS Business Analyst}. \emph{ESRI White Paper}, September 2008.
 
@@ -52,6 +56,8 @@ Suarez-Vega, R./Gutierrez-Acuna, J. L./Rodriguez-Diaz, M. (2015): \dQuote{Locati
 
 Tihi, B./Oruc, N. (2012): \dQuote{Competitive Location Assessment - the MCI Approach}. In: \emph{South East European Journal of Economics and Business}, \bold{7}, 2, p. 35-49. 
 
+Wieland, T. (2013): \dQuote{Einkaufsstaettenwahl, Einzelhandelscluster und raeumliche Versorgungsdisparitaeten - Modellierung von Marktgebieten im Einzelhandel unter Beruecksichtigung von Agglomerationseffekten}. In: Schrenk, M./Popovich, V./Zeile, P./Elisei, P. (eds.): REAL CORP 2013. Planning Times. Proceedings of 18th International Conference on Urban Planning, Regional Development and Information Society. Schwechat. p. 275-284. \url{http://www.corp.at/archive/CORP2013_98.pdf}
+
 Wieland, T. (2015): \dQuote{Raeumliches Einkaufsverhalten und Standortpolitik im Einzelhandel unter Beruecksichtigung von Agglomerationseffekten. Theoretische Erklaerungsansaetze, modellanalytische Zugaenge und eine empirisch-oekonometrische Marktgebietsanalyse anhand eines Fallbeispiels aus dem laendlichen Raum Ostwestfalens/Suedniedersachsens}. \emph{Geographische Handelsforschung}, \bold{23}. 289 pages. Mannheim : MetaGIS.
 }
 \author{
@@ -59,7 +65,7 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{mci.transmat}}, \code{\link{mci.transvar}}
+\code{\link{mci.transmat}}, \code{\link{mci.transvar}}, \code{\link{mci.shares}}
 }
 
 \examples{

@@ -5,7 +5,7 @@
 Market areas of consumer electronic stores
 }
 \description{
-Market areas of five consumer electronic (CE) stores in a german study area and their explanatory variables. The market areas (or local market shares) are generated from a representative household survey from 2012. The other variables were gathered and/or calculated at the same time (by mapping stores etc.). The survey dataset contains 95 cases (\eqn{i} = 19 submarkets x \eqn{j} = 5 suppliers).
+Market areas of five consumer electronic (CE) stores in a german study area and their explanatory variables. The market areas (or local market shares) are generated from a representative household survey from 2012. The other variables were observed and/or calculated at the same time (by mapping stores etc.). The interaction matrix dataset contains 95 cases (\eqn{i} = 19 submarkets x \eqn{j} = 5 suppliers).
 }
 \usage{data("ce")}
 \format{
@@ -37,5 +37,3 @@ mymcimodel <- mci.fit (ce, "origin_code", "store_code", "ms_obs", "traveltime",
 summary(mymcimodel)
 # Summary of the model
 }
-
-\keyword{datasets}

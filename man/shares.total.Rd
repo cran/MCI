@@ -5,7 +5,7 @@
 Total market shares/market areas
 }
 \description{
-This function calculates the total shares or sales of the suppliers based on a given MCI interaction matrix which already contains (local) market shares.
+This function calculates the total sales and market shares (or total market area) of the suppliers based on a given MCI interaction matrix which already contains (local) market shares.
 
 }
 \usage{
@@ -14,7 +14,7 @@ shares.total(mcidataset, submarkets, suppliers, shares, localmarket)
 
 \arguments{
   \item{mcidataset}{
-an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers, the market shares and a variable for the local market potential (e.g. purchasing power or another type of demand)
+an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers, the market shares and a variable for the local market potential (e.g. purchasing power, number of customers, population or another type of demand)
 }
   \item{submarkets}{
 the column in the interaction matrix \code{mcidataset} containing the submarkets
@@ -57,12 +57,12 @@ data(Freiburg1)
 data(Freiburg2)
 # Loads the data
 
-# mynewmatrix <- mci.shares(Freiburg1, "district", "store", "salesarea", 1, "distance", -2)
+mynewmatrix <- mci.shares(Freiburg1, "district", "store", "salesarea", 1, "distance", -2)
 # Calculating shares based on two attractivity/utility variables
 
-# mynewmatrix_alldata <- merge(mynewmatrix, Freiburg2)
-# Merge interaction matrix with district data (purchase power)
+mynewmatrix_alldata <- merge(mynewmatrix, Freiburg2)
+# Merge interaction matrix with district data (purchasing power)
 
-# shares.total (mynewmatrix_alldata, "district", "store", "p_ij", "ppower")
+shares.total (mynewmatrix_alldata, "district", "store", "p_ij", "ppower")
 # Calculation of total sales 
 }

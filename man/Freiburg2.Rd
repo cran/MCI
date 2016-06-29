@@ -12,7 +12,7 @@ The 42 statistical districts of Freiburg (Germany) and the estimated annual purc
   A data frame with 42 observations on the following 2 variables.
   \describe{
     \item{\code{district}}{a numeric vector representing the 42 statistical districts of Freiburg}
-    \item{\code{ppower}}{a numeric vector containing the estimated absolute value of annual purchasing power for groceries in the district}
+    \item{\code{ppower}}{a numeric vector containing the estimated absolute value of annual purchasing power for groceries in the district in EUR}
   }
 }
 \source{
@@ -27,13 +27,12 @@ data(Freiburg1)
 data(Freiburg2)
 # Loads the data
 
-# mynewmatrix <- mci.shares(Freiburg1, "district", "store", "salesarea", 1, "distance", -2)
+mynewmatrix <- mci.shares(Freiburg1, "district", "store", "salesarea", 1, "distance", -2)
 # Calculating shares based on two attractivity/utility variables
 
-# mynewmatrix_alldata <- merge(mynewmatrix, Freiburg2)
-# Merge interaction matrix with district data (purchase power)
+mynewmatrix_alldata <- merge(mynewmatrix, Freiburg2)
+# Merge interaction matrix with district data (purchasing power)
 
-# shares.total (mynewmatrix_alldata, "district", "store", "p_ij", "ppower")
-# Calculation of total sales  
+shares.total (mynewmatrix_alldata, "district", "store", "p_ij", "ppower")
+# Calculation of total sales
 }
-\keyword{datasets}
