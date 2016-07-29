@@ -33,13 +33,13 @@ function (mcidataset, submarkets, suppliers, ..., mcitrans = "lc", interc = NULL
 
   mciworkfile <- mcidataset[sort_i_j,]   
 
-  submarkets_single <- levels(as.factor(mciworkfile[[submarkets]]))   
+  submarkets_single <- levels(as.factor(as.character(mciworkfile[[submarkets]])))
 
-  submarkets_count <- nlevels(as.factor(mciworkfile[[submarkets]]))   
+  submarkets_count <- nlevels(as.factor(as.character(mciworkfile[[submarkets]])))
 
-  suppliers_single <- levels(as.factor(mciworkfile[[suppliers]]))   
+  suppliers_single <- levels(as.factor(as.character(mciworkfile[[suppliers]])))
 
-  suppliers_count <- nlevels(as.factor(mciworkfile[[suppliers]]))   
+  suppliers_count <- nlevels(as.factor(as.character(mciworkfile[[suppliers]])))
 
   i <- 0
 
@@ -78,7 +78,6 @@ function (mcidataset, submarkets, suppliers, ..., mcitrans = "lc", interc = NULL
   
   else
   {  
-  
 
   for (i in 1:nrow(mcivarsweigths))
   {

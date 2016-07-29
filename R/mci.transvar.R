@@ -1,6 +1,5 @@
 mci.transvar <-
-function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, 
-                          output_var = "numeric", check_df = TRUE) 
+function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, output_var = "numeric", show_proc = FALSE, check_df = TRUE) 
 {   
 
   if (check_df == TRUE) 
@@ -13,14 +12,22 @@ function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE,
     }
   }
     
+  if (show_proc == TRUE)
+  {
+    cat ("Processing variable", names(mcidataset[mcivariable]), "...", "\n")
+  }
     
   sort_i_j <- order(mcidataset[[submarkets]], mcidataset[[suppliers]])
 
   mciworkfile <- mcidataset[sort_i_j,]   
 
   if (checkvar(mciworkfile[[mcivariable]]) == "valid_d") {
-    cat(names(mciworkfile[mcivariable]), "is treated as dummy variable (no log-centering transformation) \n")
 
+    if (show_proc == TRUE)
+    {
+      cat(names(mciworkfile[mcivariable]), "is treated as dummy variable (no log-centering transformation) \n")
+    }
+    
     return(mciworkfile[mcivariable]) 
   }
   
@@ -28,10 +35,10 @@ function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE,
 
     logvarnewname <- paste(names(mciworkfile[mcivariable]), "_t", sep="")   
 
-    submarkets_single <- levels(as.factor(mciworkfile[[submarkets]]))   
-    suppliers_single <- levels(as.factor(mciworkfile[[suppliers]]))
-    submarkets_count <- nlevels(as.factor(mciworkfile[[submarkets]]))
-    suppliers_count <- nlevels(as.factor(mciworkfile[[suppliers]]))   
+    submarkets_single <- levels(as.factor(as.character(mciworkfile[[submarkets]])))
+    suppliers_single <- levels(as.factor(as.character(mciworkfile[[suppliers]])))
+    submarkets_count <- nlevels(as.factor(as.character(mciworkfile[[submarkets]])))
+    suppliers_count <- nlevels(as.factor(as.character(mciworkfile[[suppliers]])))
 
     submarket_i_geom <- 0   
     submarket_i_rel <- 0   

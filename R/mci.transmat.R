@@ -1,5 +1,6 @@
 mci.transmat <-
-function (mcidataset, submarkets, suppliers, mcivariable1, ...) {
+function (mcidataset, submarkets, suppliers, mcivariable1, ..., show_proc = FALSE) 
+{
 
   if (exists(as.character(substitute(mcidataset)))) { 
     checkdf(mcidataset, submarkets, suppliers, mcivariable1, ...)
@@ -11,9 +12,11 @@ function (mcidataset, submarkets, suppliers, mcivariable1, ...) {
   mcidataset_rows <- nrow(mcidataset)
 
   addmcivars <- unlist(list(...))
+
   addmcivars_count <- length(addmcivars)
 
-  mcivariablelog1 <- mci.transvar (mcidataset, submarkets, suppliers, mcivariable1, output_ij=TRUE)
+  mcivariablelog1 <- mci.transvar (mcidataset, submarkets, suppliers, mcivariable1, output_ij=TRUE, 
+                                   show_proc = show_proc)
 
   if (addmcivars_count > 0)
   {
@@ -28,7 +31,7 @@ function (mcidataset, submarkets, suppliers, mcivariable1, ...) {
 
     varname <- addmcivars[[v]]
 
-    addmcivariablelog[v] <- mci.transvar (mcidataset, submarkets, suppliers, varname, output_ij=FALSE)
+    addmcivariablelog[v] <- mci.transvar (mcidataset, submarkets, suppliers, varname, output_ij=FALSE, show_proc = show_proc)
 
     if (checkvar(addmcivariablelog[v]) == "valid_d") 
     {

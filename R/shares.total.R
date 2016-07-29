@@ -1,15 +1,18 @@
 shares.total <-
-function (mcidataset, submarkets, suppliers, shares, localmarket)
+function (mcidataset, submarkets, suppliers, shares, localmarket, plotChart = FALSE, plotChart.title = "Total sales", plotChart.unit = "sales", check_df = TRUE)   
 
 {
   
-  if (exists(as.character(substitute(mcidataset)))) { 
-    checkdf(mcidataset, submarkets, suppliers, shares, localmarket)
+  if (check_df == TRUE)
+  {
+    if (exists(as.character(substitute(mcidataset)))) { 
+      checkdf(mcidataset, submarkets, suppliers, shares, localmarket)
+    }
+    else {
+      stop(paste("Dataset", as.character(substitute(mcidataset))), " not found", call. = FALSE)
+    }
   }
-  else {
-    stop(paste("Dataset", as.character(substitute(mcidataset))), " not found", call. = FALSE)
-  }
-
+  
   mciworkfile <- mcidataset
   
   mciworkfile[[shares]][is.na(mciworkfile[[shares]])] <- 0
@@ -30,5 +33,14 @@ function (mcidataset, submarkets, suppliers, shares, localmarket)
   E_j_output <- data.frame(suppliers_single, sum_E_j)   
   E_j_output$share_j <- E_j_output$sum_E_j/sum(E_j_output$sum_E_j, na.rm = TRUE)   
 
+  if (plotChart == TRUE) 
+  {
+    E_j_output_sorted <- E_j_output[order(E_j_output$share_j),]
+    max_x <- max(E_j_output_sorted$sum_E_j*1.2)
+    barplot(E_j_output_sorted$sum_E_j, names.arg = E_j_output_sorted$suppliers_single, 
+            horiz = TRUE, main = plotChart.title, sub = plotChart.unit, 
+            xlim = c(0, max_x))
+  }
+  
   return(E_j_output)
 }

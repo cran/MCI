@@ -1,8 +1,8 @@
 mci.fit <-
-function (mcidataset, submarkets, suppliers, shares, ..., origin=TRUE) 
+function (mcidataset, submarkets, suppliers, shares, ..., origin=TRUE, show_proc = FALSE) 
   {
 
-  mciworkfile <- mci.transmat (mcidataset, submarkets, suppliers, shares, ...)
+  mciworkfile <- mci.transmat (mcidataset, submarkets, suppliers, shares, ..., show_proc = show_proc)
 
   mciworkfile_columns <- ncol(mciworkfile)
   mciworkfile_rows <- nrow(mciworkfile)
@@ -16,7 +16,6 @@ function (mcidataset, submarkets, suppliers, shares, ..., origin=TRUE)
 
   if (origin == TRUE) {
     mci_formula <- paste(mci_depvar, "~ 0 +", mci_expvars_formula)
-
   }
   else {
     mci_formula <- paste(mci_depvar, "~", mci_expvars_formula)
@@ -25,5 +24,4 @@ function (mcidataset, submarkets, suppliers, shares, ..., origin=TRUE)
   mci_model <- lm (mci_formula, data = mciworkfile)
 
   return(mci_model)
-
 }

@@ -2,7 +2,7 @@
 \alias{mci.shares}
 
 \title{
-Market share/market area simulations
+MCI market share/market area simulations
 }
 \description{
 This function calculates (local) market shares based on specified explanatory variables and their weighting parameters in a given MCI interaction matrix.
@@ -40,7 +40,7 @@ The function \code{mci.shares()} returns the input interaction matrix (\code{dat
 \references{
 Huff, D. L./Batsell, R. R. (1975): \dQuote{Conceptual and Operational Problems with Market Share Models of Consumer Spatial Behavior}. In: \emph{Advances in Consumer Research}, \bold{2}, p. 165-172.
 
-Huff, D. L./McCallum, D. (2008): \dQuote{Calibrating the Huff Model Using ArcGIS Business Analyst}. \emph{ESRI White Paper}, September 2008.
+Huff, D. L./McCallum, D. (2008): \dQuote{Calibrating the Huff Model Using ArcGIS Business Analyst}. \emph{ESRI White Paper}, September 2008. \url{https://www.esri.com/library/whitepapers/pdfs/calibrating-huff-model.pdf}
 
 Nakanishi, M./Cooper, L. G. (1974): \dQuote{Parameter Estimation for a Multiplicative Competitive Interaction Model - Least Squares Approach}. In: \emph{Journal of Marketing Research}, \bold{11}, 3, p. 303-311.
 

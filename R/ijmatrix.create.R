@@ -1,6 +1,6 @@
 ijmatrix.create <-
-function (rawdataset, submarkets, suppliers, ..., remNA = TRUE, 
-                             remSing = FALSE, remSing.val = 1) 
+function (rawdataset, submarkets, suppliers, ..., remNA = TRUE, remSing = FALSE, remSing.val = 1, remSingSupp.val = 1, correctVar = FALSE, correctVar.val = 1)   
+  
   {
   
   if (exists(as.character(substitute(rawdataset)))) { 
@@ -34,9 +34,9 @@ function (rawdataset, submarkets, suppliers, ..., remNA = TRUE,
     mcirawdata <- rawdataset[((is.na(rawdataset[[submarkets]])) == FALSE) & ((is.na(rawdataset[[suppliers]])) == FALSE) ,]  
   }
   
-  
   if (remSing == TRUE)
   {
+
     freq_subm <- table(mcirawdata[[submarkets]])
 
     freq_subm_df <- as.data.frame(freq_subm)
@@ -44,9 +44,17 @@ function (rawdataset, submarkets, suppliers, ..., remNA = TRUE,
 
     freq_subm_df_adj <- freq_subm_df[freq_subm_df$Freq > remSing.val,1]
 
-    mcirawdata <- mcirawdata[(mcirawdata[[submarkets]] %in% freq_subm_df_adj),]
+    freq_supp <- table(mcirawdata[[suppliers]])
+
+    freq_supp_df <- as.data.frame(freq_supp)
+    names(freq_supp_df)[1] = names(mcirawdata[suppliers])
+
+    freq_supp_df_adj <- freq_supp_df[freq_supp_df$Freq > remSingSupp.val,1]
+
+    mcirawdata <- mcirawdata[((mcirawdata[[submarkets]] %in% freq_subm_df_adj) & (mcirawdata[[suppliers]] %in% freq_supp_df_adj)),]
 
   }
+  
   
   submarkets_single <- levels(as.factor(as.character(mcirawdata[[submarkets]])))
 
@@ -73,6 +81,12 @@ function (rawdataset, submarkets, suppliers, ..., remNA = TRUE,
 
   mciworkfile$freq_ij_abs[is.na(mciworkfile$freq_ij_abs)] <- 0
 
+  
+  if (correctVar == TRUE)
+  {
+    mciworkfile$freq_ij_abs <- var.correct(mciworkfile$freq_ij_abs, corr.mode = "inc", incby = correctVar.val)
+  }
+  
   submarkets_count <- nlevels(as.factor(as.character(mcirawdata[[submarkets]])))
 
   suppliers_count <- nlevels(as.factor(as.character(mcirawdata[[suppliers]])))
@@ -152,11 +166,17 @@ function (rawdataset, submarkets, suppliers, ..., remNA = TRUE,
             interaction <- rbind(interaction, paste(as.character(submarkets_single[i]), "-", as.character(suppliers_single[j]), sep=""))
 
           }  
-        }  
+        }   
         
         mciaddvardf[addvar_abs_name] <- obs_ij_abs
-        
+
         mciaddvardf[addvar_total_name] <- obs_i_abs 
+
+        if (correctVar == TRUE)
+        {
+          mciaddvardf[addvar_abs_name] <- var.correct(mciaddvardf[addvar_abs_name], corr.mode = "inc", incby = correctVar.val)
+          mciaddvardf[addvar_total_name] <- mciaddvardf[addvar_total_name]+(suppliers_count*correctVar.val)
+        }
         
         mciaddvardf[addvar_p_ij] <- mciaddvardf[addvar_abs_name]/mciaddvardf[addvar_total_name] 
 

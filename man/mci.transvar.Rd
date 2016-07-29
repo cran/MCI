@@ -1,14 +1,17 @@
 \name{mci.transvar}
 \alias{mci.transvar}
+
 \title{
-Log-centering transformation of one variable in an interaction matrix
+Log-centering transformation of one variable in an MCI interaction matrix
 }
+
 \description{
 This function applies the \emph{log-centering transformation} to a variable in a given MCI interaction matrix.
 }
+
 \usage{
-mci.transvar (mcidataset, submarkets, suppliers, mcivariable, 
-output_ij = FALSE, output_var = "numeric", check_df = TRUE)
+mci.transvar(mcidataset, submarkets, suppliers, mcivariable, 
+output_ij = FALSE, output_var = "numeric", show_proc = FALSE, check_df = TRUE)
 }
 
 \arguments{
@@ -30,10 +33,14 @@ logical argument that indicates if the function output has to be a \code{data.fr
   \item{output_var}{
 defines the mode of the function output if \code{output_ij = FALSE} (default is \code{output_var = "numeric"}, otherwise \code{"list"})
 }
+  \item{show_proc}{
+logical argument that indicates if the function prints messages about the state of process during the work (e.g. \dQuote{Processing variable xyz ...} or \dQuote{Variable xyz is regarded as dummy variable}). Default: \code{show_proc = FALSE} (messages off)
+}
   \item{check_df}{
 logical argument that indicates if the input (dataset, column names) is checked (default: \code{check_df = TRUE} (should not be changed, only for internal use))
 }
 }
+
 \details{
 The regarded variable in the input dataset is transformed to regression-ready data with the \emph{log-centering transformation} by Nakanishi/Cooper (1974) (to transform a complete interaction matrix, use \code{mci.transmat()}, for transformation and fitting use \code{mci.fit()}). The \emph{log-centering transformation} can be regarded as the key concept of the MCI model because it enables the model to be estimated by OLS (ordinary least squares) regression. The function identifies dummy variables which are not transformed (because they do not have to be).
 }
@@ -43,7 +50,7 @@ The format of the output can be controlled by the last two arguments of the func
 \references{
 Huff, D. L./Batsell, R. R. (1975): \dQuote{Conceptual and Operational Problems with Market Share Models of Consumer Spatial Behavior}. In: \emph{Advances in Consumer Research}, \bold{2}, p. 165-172.
 
-Huff, D. L./McCallum, D. (2008): \dQuote{Calibrating the Huff Model Using ArcGIS Business Analyst}. \emph{ESRI White Paper}, September 2008.
+Huff, D. L./McCallum, D. (2008): \dQuote{Calibrating the Huff Model Using ArcGIS Business Analyst}. \emph{ESRI White Paper}, September 2008. \url{https://www.esri.com/library/whitepapers/pdfs/calibrating-huff-model.pdf}
 
 Nakanishi, M./Cooper, L. G. (1974): \dQuote{Parameter Estimation for a Multiplicative Competitive Interaction Model - Least Squares Approach}. In: \emph{Journal of Marketing Research}, \bold{11}, 3, p. 303-311.
 
@@ -51,6 +58,7 @@ Wieland, T. (2013): \dQuote{Einkaufsstaettenwahl, Einzelhandelscluster und raeum
 
 Wieland, T. (2015): \dQuote{Raeumliches Einkaufsverhalten und Standortpolitik im Einzelhandel unter Beruecksichtigung von Agglomerationseffekten. Theoretische Erklaerungsansaetze, modellanalytische Zugaenge und eine empirisch-oekonometrische Marktgebietsanalyse anhand eines Fallbeispiels aus dem laendlichen Raum Ostwestfalens/Suedniedersachsens}. \emph{Geographische Handelsforschung}, \bold{23}. 289 pages. Mannheim : MetaGIS.
 }
+
 \author{
 Thomas Wieland
 }
@@ -58,6 +66,7 @@ Thomas Wieland
 \seealso{
 \code{\link{mci.fit}}, \code{\link{mci.transmat}}
 }
+
 \examples{
 data(ce)
 # Loads the data

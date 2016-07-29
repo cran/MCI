@@ -1,6 +1,5 @@
 ijmatrix.shares <-
-function (rawmatrix, submarkets, suppliers, observations, 
-                             varname_total = "freq_i_total", varname_shares = "p_ij_obs") 
+function (rawmatrix, submarkets, suppliers, observations, varname_total = "freq_i_total", varname_shares = "p_ij_obs") 
   
   {
   
@@ -19,16 +18,16 @@ function (rawmatrix, submarkets, suppliers, observations,
   
   mcirawmatrix <- rawmatrix   
 
-  submarkets_single <- levels(as.factor(mcirawmatrix[[submarkets]]))
+  submarkets_single <- levels(as.factor(as.character(mcirawmatrix[[submarkets]])))
 
-  suppliers_single <- levels(as.factor(mcirawmatrix[[suppliers]]))
+  suppliers_single <- levels(as.factor(as.character(mcirawmatrix[[suppliers]])))
 
   submarkets_colname <- names(rawmatrix[submarkets])
   suppliers_colname <- names(rawmatrix[suppliers])
   
-  submarkets_count <- nlevels(as.factor(mcirawmatrix[[submarkets]]))   
+  submarkets_count <- nlevels(as.factor(as.character(mcirawmatrix[[submarkets]])))
 
-  suppliers_count <- nlevels(as.factor(mcirawmatrix[[suppliers]]))   
+  suppliers_count <- nlevels(as.factor(as.character(mcirawmatrix[[suppliers]])))
 
   p_ij_obs <- vector()
   freq_ij_rel <- vector()

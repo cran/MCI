@@ -13,7 +13,7 @@ function (x, corr.mode = "inc", incby = 1)
 
     y <- x+xmin+incby
   }
- 
+  
   if (corr.mode == "zetas") {
 
     mean_x <- mean(x)
