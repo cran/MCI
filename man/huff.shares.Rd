@@ -13,7 +13,7 @@ atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL, check_df = TRUE)
 
 \arguments{
   \item{huffdataset}{
-an interaction matrix which is a \code{data.frame} containing the origins, locations and the explanatory variables (attractivity, transport costs)
+an interaction matrix which is a \code{data.frame} containing the origins, locations and the explanatory variables (attraction, transport costs)
 }
   \item{origins}{
 the column in the interaction matrix \code{huffdataset} containing the origins (e.g. ZIP codes)
@@ -22,19 +22,19 @@ the column in the interaction matrix \code{huffdataset} containing the origins (
 the column in the interaction matrix \code{huffdataset} containing the locations (e.g. store codes)
 }
   \item{attrac}{
-the column in the interaction matrix \code{huffdataset} containing the attractivity variable (e.g. sales area)
+the column in the interaction matrix \code{huffdataset} containing the attraction variable (e.g. sales area)
 }
   \item{dist}{
 the column in the interaction matrix \code{huffdataset} containing the transport costs (e.g. travelling time or street distance)
 }
   \item{gamma}{
-a single numeric value of \eqn{\gamma} for the exponential weighting of the attractivity variable (default: 1)
+a single numeric value of \eqn{\gamma} for the exponential weighting of the attraction variable (default: 1)
 }
   \item{lambda}{
 a single numeric value of \eqn{\lambda} for the (exponential) weighting of distance (transport costs, default: -2)
 }
   \item{atype}{
-Type of attractivity weighting function: \code{atype = "pow"} (power function), \code{atype = "exp"} (exponential function) or \code{atype = "logistic"} (default: \code{atype = "pow"})
+Type of attraction weighting function: \code{atype = "pow"} (power function), \code{atype = "exp"} (exponential function) or \code{atype = "logistic"} (default: \code{atype = "pow"})
 }
   \item{dtype}{
 Type of distance weighting function: \code{dtype = "pow"} (power function), \code{dtype = "exp"} (exponential function) or \code{dtype = "logistic"} (default: \code{dtype = "pow"})
@@ -50,7 +50,7 @@ logical argument that indicates if the given dataset is checked for correct inpu
 }
 }
 \details{
-The \emph{Huff model} (Huff 1962, 1963, 1964) is the most popular \emph{spatial interaction model} for retailing and services and belongs to the family of \emph{probabilistic market area models}. The basic idea of the model, derived from the \emph{Luce choice axiom}, is that consumer decisions are not deterministic but probabilistic, so the decision of customers for a shopping location in a competitive environment cannot be predicted exactly. The results of the model are probabilities for these decisions, which can be interpreted as market shares of the regarded locations (\eqn{j}) in the customer origins (\eqn{i}), \eqn{p_{ij}}. The model results can be regarded as an equilibrium solution (consumer equilibrium) with logically consistent market shares (0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}). From a theoretical perspective, the model is based on an utility function with two explanatory variables ("attractivity" of the locations, transport costs between origins and locations), which are weighted by an exponent: \eqn{U_{ij}=A_{j}^\gamma d_{ij}^{-\lambda}}. But the weighting functions can also be exponential or logistic. This function computes the market shares from a given interaction matrix and given weighting parameters. The result matrix can be processed by the function \code{shares.total()} to calculate the total values (e.g. annual sales) and shares.
+This function computes the market shares from a given interaction matrix and given weighting parameters. The result matrix can be processed by the function \code{shares.total()} to calculate the total values (e.g. annual sales) and shares.
 }
 \value{
 Returns the input interaction matrix including the calculated shares (\code{p_ij}) as \code{data.frame}.

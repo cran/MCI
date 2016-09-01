@@ -33,13 +33,13 @@ character value, name of the variable for the market shares \eqn{p_{ij}} in the 
 }
 }
 \details{
-This function calculates the market shares of every \eqn{j} in every \eqn{i} (\eqn{p_{ij}}) based on an existing interaction matrix. In the MCI model the dependent variable is the market share of the \eqn{j} suppliers in the \eqn{i} submarkets, in which the shares are \emph{logically consistent} (that means: 0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}).
+This function calculates the market shares of every \eqn{j} in every \eqn{i} (\eqn{p_{ij}}) based on an existing interaction matrix.
 }
 \value{
 The input interaction matrix which is a \code{data.frame} with a new column \code{'p_ij_obs'} (or another stated name in the argument \code{varname_shares}) or, if used after \code{\link{ijmatrix.create}}, an update of the columns \code{'freq_i_total'} and \code{'p_ij_obs'} (or different stated names in the arguments \code{varname_total} and/or \code{varname_shares}).
 }
 \references{
-Cooper, L. G./Nakanishi, M. (1988): \dQuote{Market-Share Analysis: Evaluating competitive marketing effectiveness}. Boston, Dordrecht, London : Kluwer.
+Cooper, L. G./Nakanishi, M. (2010): \dQuote{Market-Share Analysis: Evaluating competitive marketing effectiveness}. Boston, Dordrecht, London : Kluwer (first published 1988). E-book version from 2010: \url{http://www.anderson.ucla.edu/faculty/lee.cooper/MCI_Book/BOOKI2010.pdf}
 
 Huff, D. L./McCallum, D. (2008): \dQuote{Calibrating the Huff Model Using ArcGIS Business Analyst}. \emph{ESRI White Paper}, September 2008. \url{https://www.esri.com/library/whitepapers/pdfs/calibrating-huff-model.pdf}
 

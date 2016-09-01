@@ -1,5 +1,5 @@
 model.fit <-
-function (y_obs, y_exp)
+function (y_obs, y_exp, plotVal = FALSE)
 {
   n <- length(y_obs)
 
@@ -18,5 +18,11 @@ function (y_obs, y_exp)
 
   globerr <- resids_abs_sum/sum_y_obs
 
+  if (plotVal == TRUE)
+  {
+    plot(c(0, max(y_obs)), c(0, max(y_obs)), type="l", main="Model fit", xlab = "Observed", ylab = "Expected")
+    points (y_obs, y_exp, col = "blue", pch = 20, cex = 1.5)
+  }
+  
   return (list(resids_sq_sum=resids_sq_sum, pseudorsq=pseudorsq, globerr=globerr, mape=mape))
 }

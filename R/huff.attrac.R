@@ -1,5 +1,10 @@
 huff.attrac <-
-function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "pow", lambda2 = NULL, localmarket_dataset, localmarket, location_dataset, location_id, location_total, tolerance = 5, output = "matrix", show_proc = FALSE, check_df = TRUE)
+function (huffdataset, origins, locations, attrac, dist,    
+                      lambda = -2, dtype= "pow", lambda2 = NULL, 
+                      localmarket_dataset, origin_id, localmarket, 
+                      location_dataset, location_id, location_total,
+                      tolerance = 5, output = "matrix", show_proc = FALSE,
+                      check_df = TRUE)
 {
   
   if (check_df == TRUE)
@@ -12,7 +17,7 @@ function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "po
     }
 
     if (exists(as.character(substitute(localmarket_dataset)))) { 
-      checkdf(localmarket_dataset, localmarket)
+      checkdf(localmarket_dataset, origin_id, localmarket)
     }
     else {
       stop(paste("Dataset", as.character(substitute(localmarket_dataset))), " not found", call. = FALSE)
@@ -39,8 +44,9 @@ function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "po
 
   locations_count <- nlevels(as.factor(as.character(huffdataset[[locations]])))
 
-  huffworkfile <- merge (huffdataset, localmarket_dataset)
+  huffworkfile <- merge (huffdataset, localmarket_dataset, by.x = origins, by.y = origin_id)
 
+  
   huff_shares <- huff.shares(huffworkfile, origins, locations, attrac, dist, lambda = lambda, dtype = dtype, lambda2 = lambda2, check_df = FALSE)
 
   huff_total <- shares.total(huff_shares, origins, locations, "p_ij", localmarket, check_df = FALSE)
@@ -55,6 +61,7 @@ function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "po
 
   huff_total_suppdata_complete <- merge (huff_total_suppdata, locations_attrac_df)
 
+  
   k <- 0
   
   total_obs <- vector()
@@ -102,7 +109,7 @@ function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "po
 
       b[k] <- (attrac_new[k]-attrac_old[k])/(total_exp2[k]-total_exp1[k])
 
-      a[k] <- b[k] * total_exp2[k] - attrac_new[k]  # just for control
+      a[k] <- b[k] * total_exp2[k] - attrac_new[k]  # just for control (a = 0)
 
       attrac_new_opt[k] <- a[k] + b[k] * total_obs[k]
 
@@ -112,7 +119,7 @@ function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "po
     { 
       attrac_new_opt[k] <- as.numeric(as.character(huff_total_suppdata_complete[[attrac]][k]))
     }  
-    
+  
 
     huffworkfile[huffworkfile[[locations]] == locations_single[k],][[attrac]] <- attrac_new_opt[k]
 

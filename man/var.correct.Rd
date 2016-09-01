@@ -34,6 +34,8 @@ Colome Perales, R. (2002): \dQuote{Consumer Choice in Competitive Location Model
 
 Cooper, L.G./Nakanishi, M. (1983): \dQuote{Standardizing Variables in Multiplicative Choice Models}. In: \emph{Journal of Consumer Research}, \bold{10}, 1, p. 96-108.
 
+Cooper, L. G./Nakanishi, M. (2010): \dQuote{Market-Share Analysis: Evaluating competitive marketing effectiveness}. Boston, Dordrecht, London : Kluwer (first published 1988). E-book version from 2010: \url{http://www.anderson.ucla.edu/faculty/lee.cooper/MCI_Book/BOOKI2010.pdf}
+
 Hartmann, M. (2005): \dQuote{Gravitationsmodelle als Verfahren der Standortanalyse im Einzelhandel}. \emph{Statistik Regional Electronic Papers}, \bold{02/2005}. Halle.
 
 Tihi, B./Oruc, N. (2012): \dQuote{Competitive Location Assessment - the MCI Approach}. In: \emph{South East European Journal of Economics and Business}, \bold{7}, 2, p. 35-49. 

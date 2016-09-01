@@ -1,6 +1,5 @@
 ijmatrix.crosstab <-
 function (mcidataset, submarkets, suppliers, shares)   
-
 {
   
   mciworkfile <- mcidataset   

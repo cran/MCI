@@ -1,5 +1,6 @@
 ijmatrix.shares <-
-function (rawmatrix, submarkets, suppliers, observations, varname_total = "freq_i_total", varname_shares = "p_ij_obs") 
+function (rawmatrix, submarkets, suppliers, observations, 
+                             varname_total = "freq_i_total", varname_shares = "p_ij_obs") 
   
   {
   

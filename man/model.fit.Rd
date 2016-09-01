@@ -5,10 +5,10 @@
 Goodness of fit statistics for the Huff model
 }
 \description{
-This function calculates several goodness of fit values to evaluate how good the Huff model fits the empirical observations.
+This function calculates several goodness of fit values to evaluate how good the observed values fit the empirical observations.
 }
 \usage{
-model.fit(y_obs, y_exp)
+model.fit(y_obs, y_exp, plotVal = FALSE)
 }
 
 \arguments{
@@ -17,6 +17,9 @@ Observed values of the dependent variable \eqn{y}
 }
   \item{y_exp}{
 Expected values of the dependent variable \eqn{y} (model results)
+}
+  \item{plotVal}{
+Logical argument that indicates if the function plots a graph comparing observed and expected values
 }
 }
 \details{
@@ -46,23 +49,30 @@ Thomas Wieland
 }
 
 \examples{
+# Controlling the fit of a Huff Model market area estimation #
+
 data(Freiburg1)
 data(Freiburg2)
 data(Freiburg3)
 # Loads the data
 
-# NOTE: This may take a while!
-# huffmat_total <- huff.attrac(Freiburg1, "district", "store", "salesarea", "distance", lambda = -2,
-# dtype= "pow", lambda2 = NULL, Freiburg2, "ppower", Freiburg3, "store", "annualsales", 
-# output = "total", show_proc = TRUE)
-# Local optimization of store attractivity using the function huff.attrac()
-# returns a data frame with total values (observed and expected after optimization)
-# which is stored into huffmat_total
+huff_mat <- huff.shares (Freiburg1, "district", "store", "salesarea", "distance")
+# Market area estimation using the Huff Model with standard parameters
+# (gamma = 1, lambda = -2)
 
-# model.fit(huffmat_total$total_obs, huffmat_total$sum_E_j)
-# returns a list with fit statistics (sum of sq. resid., pseudo-R-squared, global error, mape)
+huff_mat_pp <- merge (huff_mat, Freiburg2)
+# Adding the purchasing power data for the city districts
+
+huff_total <- shares.total (huff_mat_pp, "district", "store", "p_ij", "ppower")
+# Total expected sales and shares
+
+huff_total_control <- merge (huff_total, Freiburg3, by.x = "suppliers_single",
+by.y = "store")
+
+model.fit(huff_total_control$annualsales, huff_total_control$sum_E_j, plotVal = TRUE)
+# Observed vs. expected
 
 # Results can be adressed directly:
-# huff_fit <- model.fit(huffmat_total$total_obs, huffmat_total$sum_E_j)
-# huff_fit$mape
+huff_fit <- model.fit(huff_total_control$annualsales, huff_total_control$sum_E_j, plotVal = TRUE)
+huff_fit$mape
 }

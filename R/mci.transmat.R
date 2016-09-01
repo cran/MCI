@@ -36,9 +36,12 @@ function (mcidataset, submarkets, suppliers, mcivariable1, ..., show_proc = FALS
     if (checkvar(addmcivariablelog[v]) == "valid_d") 
     {
       colnames(addmcivariablelog)[v] <- varname
+
     }
     else { 
+
       colnames(addmcivariablelog)[v] <- paste(varname, "_t", sep="")  
+
     }
     
   }

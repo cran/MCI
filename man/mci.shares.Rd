@@ -32,7 +32,7 @@ if \code{mcitrans = "ilc"}: logical argument that indicates if an intercept is i
 }
 }
 \details{
-The input dataset, a MCI interaction matrix, is used for a calculation of (local) market shares (\eqn{p_{ij}}), based on (at least one) given explanatory variable(s) and (a) given weighting parameter(s). In the MCI model the dependent variable is the market share of the \eqn{j} suppliers in the \eqn{i} submarkets (\eqn{p_{ij}}), in which the shares are \emph{logically consistent} (that means: 0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}). If an intercept is included in the model and/or if dummy variables are used as explanatories, the \emph{inverse log-centering transformation} by Nakanishi/Cooper (1982) has to be used for simulations (\code{mcitrans = "ilc"}).
+In this function, the input dataset (MCI interaction matrix) is used for a calculation of (local) market shares (\eqn{p_{ij}}), based on (at least one) given explanatory variable(s) and (a) given weighting parameter(s). If an intercept is included in the model and/or if dummy variables are used as explanatories, the \emph{inverse log-centering transformation} by Nakanishi/Cooper (1982) has to be used for simulations (\code{mcitrans = "ilc"}).
 }
 \value{
 The function \code{mci.shares()} returns the input interaction matrix (\code{data.frame}) with new variables/columns, where the last one (\code{p_ij}) is the one of interest, containing the (local) market shares of the \eqn{j} suppliers in the \eqn{i} submarkets (\eqn{p_{ij}}).

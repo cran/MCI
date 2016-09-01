@@ -1,5 +1,10 @@
 huff.fit <-
-function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "pow", lambda2 = NULL, localmarket_dataset, localmarket, location_dataset, location_id, location_total, tolerance = 5, iterations = 3, output = "total", show_proc = FALSE, check_df = TRUE)
+function (huffdataset, origins, locations, attrac, dist, 
+                      lambda = -2, dtype= "pow", lambda2 = NULL, 
+                      localmarket_dataset, origin_id, localmarket, 
+                      location_dataset, location_id, location_total, 
+                      tolerance = 5, iterations = 3, output = "total",
+                      show_proc = FALSE, check_df = TRUE)
 {
   
   if (check_df == TRUE)
@@ -12,7 +17,7 @@ function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "po
     }
 
     if (exists(as.character(substitute(localmarket_dataset)))) { 
-      checkdf(localmarket_dataset, localmarket)
+      checkdf(localmarket_dataset, origin_id, localmarket)
     }
     else {
       stop(paste("Dataset", as.character(substitute(localmarket_dataset))), " not found", call. = FALSE)
@@ -40,13 +45,19 @@ function (huffdataset, origins, locations, attrac, dist, lambda = -2, dtype= "po
   {
     if (show_proc == TRUE) { cat ("Iteration", i, "of", iterations, "...", "\n")}
     
-    huffworkfile_total <- huff.attrac(huffworkfile, origins, locations, attrac, dist, lambda = lambda, dtype = dtype, lambda2 = lambda2, localmarket_dataset, localmarket, location_dataset, location_id, location_total, tolerance = tolerance,  output = "total", show_proc = show_proc, check_df = FALSE)
- 
+    huffworkfile_total <- huff.attrac(huffworkfile, origins, locations, attrac, dist, 
+                                      lambda = lambda, dtype = dtype, lambda2 = lambda2, 
+                                      localmarket_dataset, origin_id, localmarket, 
+                                      location_dataset, location_id, location_total, 
+                                      tolerance = tolerance,  output = "total", show_proc = show_proc,
+                                      check_df = FALSE)
+    
+    
+    
     locations_single <- huffworkfile_total$suppliers_single
 
     model_diag <- model.fit(huffworkfile_total$total_obs, huffworkfile_total$sum_E_j)
     model_diag_df <- rbind(model_diag_df, as.data.frame(model_diag))
-
 
     huffworkfile_total_attrac_new <- data.frame (huffworkfile_total$suppliers_single, huffworkfile_total$attrac_new_opt)
     colnames(huffworkfile_total_attrac_new) <- c("suppliers_single", "attrac_new_opt")

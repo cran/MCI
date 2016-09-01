@@ -1,5 +1,6 @@
 mci.transvar <-
-function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, output_var = "numeric", show_proc = FALSE, check_df = TRUE) 
+function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, 
+                          output_var = "numeric", show_proc = FALSE, check_df = TRUE) 
 {   
 
   if (check_df == TRUE) 
@@ -28,7 +29,8 @@ function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, out
       cat(names(mciworkfile[mcivariable]), "is treated as dummy variable (no log-centering transformation) \n")
     }
     
-    return(mciworkfile[mcivariable]) 
+    if (output_var == "vec") { return(mciworkfile[mcivariable]) }
+    else { return(as.numeric(unlist(mciworkfile[mcivariable]))) }  
   }
   
   if (checkvar(mciworkfile[[mcivariable]]) == "valid_n") {
@@ -68,6 +70,7 @@ function (mcidataset, submarkets, suppliers, mcivariable, output_ij = FALSE, out
       if (output_var == "numeric") { mcilinoutput[3] <- as.numeric(unlist(mcilinoutput[3])) } 
       
       return(mcilinoutput)
+
     }
     else {
       if (output_var == "numeric") { return(as.numeric(unlist(mcilinvar))) }

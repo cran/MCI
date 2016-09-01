@@ -1,5 +1,7 @@
 ijmatrix.create <-
-function (rawdataset, submarkets, suppliers, ..., remNA = TRUE, remSing = FALSE, remSing.val = 1, remSingSupp.val = 1, correctVar = FALSE, correctVar.val = 1)   
+function (rawdataset, submarkets, suppliers, ..., remNA = TRUE, 
+                             remSing = FALSE, remSing.val = 1, remSingSupp.val = 1,     
+                             correctVar = FALSE, correctVar.val = 1)   
   
   {
   
@@ -33,6 +35,7 @@ function (rawdataset, submarkets, suppliers, ..., remNA = TRUE, remSing = FALSE,
   {
     mcirawdata <- rawdataset[((is.na(rawdataset[[submarkets]])) == FALSE) & ((is.na(rawdataset[[suppliers]])) == FALSE) ,]  
   }
+  
   
   if (remSing == TRUE)
   {
@@ -86,6 +89,7 @@ function (rawdataset, submarkets, suppliers, ..., remNA = TRUE, remSing = FALSE,
   {
     mciworkfile$freq_ij_abs <- var.correct(mciworkfile$freq_ij_abs, corr.mode = "inc", incby = correctVar.val)
   }
+  
   
   submarkets_count <- nlevels(as.factor(as.character(mcirawdata[[submarkets]])))
 
@@ -165,7 +169,7 @@ function (rawdataset, submarkets, suppliers, ..., remNA = TRUE, remSing = FALSE,
 
             interaction <- rbind(interaction, paste(as.character(submarkets_single[i]), "-", as.character(suppliers_single[j]), sep=""))
 
-          }  
+          }   
         }   
         
         mciaddvardf[addvar_abs_name] <- obs_ij_abs

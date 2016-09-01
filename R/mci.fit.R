@@ -24,4 +24,5 @@ function (mcidataset, submarkets, suppliers, shares, ..., origin=TRUE, show_proc
   mci_model <- lm (mci_formula, data = mciworkfile)
 
   return(mci_model)
+
 }

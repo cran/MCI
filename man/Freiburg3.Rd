@@ -26,12 +26,20 @@ Wieland, T. (2015): \dQuote{Nahversorgung im Kontext raumoekonomischer Entwicklu
 data(Freiburg1)
 data(Freiburg2)
 data(Freiburg3)
-# Loading the three Freiburg datasets
+# Loads the data
 
-# NOTE: This may take a while!
-# huff.attrac(Freiburg1, "district", "store", "salesarea", "distance", lambda = -2, dtype= "pow",
-# lambda2 = NULL, Freiburg2, "ppower", Freiburg3, "store", "annualsales", tolerance = 5, 
-# output = "total")
-# Local optimization of store attractivity using the function huff.attrac()
-# returns a data frame with total values (observed and expected after optimization)
+huff_mat <- huff.shares (Freiburg1, "district", "store", "salesarea", "distance")
+# Market area estimation using the Huff Model with standard parameters
+# (gamma = 1, lambda = -2)
+
+huff_mat_pp <- merge (huff_mat, Freiburg2)
+# Adding the purchasing power data for the city districts
+
+huff_total <- shares.total (huff_mat_pp, "district", "store", "p_ij", "ppower")
+# Total expected sales and shares
+
+huff_total_control <- merge (huff_total, Freiburg3, by.x = "suppliers_single", 
+by.y = "store")
+
+model.fit(huff_total_control$annualsales, huff_total_control$sum_E_j, plotVal = TRUE)
 }

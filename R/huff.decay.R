@@ -1,5 +1,5 @@
 huff.decay <-
-function (dataset, x, y, plots = FALSE) 
+function (dataset, x, y, plotFunc = TRUE) 
 {
   
   if (exists(as.character(substitute(dataset)))) { 
@@ -8,12 +8,10 @@ function (dataset, x, y, plots = FALSE)
   else {
     stop(paste("Dataset", as.character(substitute(dataset))), " not found", call. = FALSE)
   }
-
   if (checkvar(dataset[[x]]) == "invalid_s") stop(paste("Variable", names(dataset[x]), "is invalid (contains strings) \n"), call. = FALSE)
   if (checkvar(dataset[[x]]) == "invalid_zn") stop(paste("Variable", names(dataset[x]), "is invalid (contains zero and/or negative values) \n"), call. = FALSE)
   if (checkvar(dataset[[y]]) == "invalid_s") stop(paste("Variable", names(dataset[y]), "is invalid (contains strings) \n"), call. = FALSE)
   if (checkvar(dataset[[y]]) == "invalid_zn") stop(paste("Variable", names(dataset[y]), "is invalid (contains zero and/or negative values) \n"), call. = FALSE)
-  
   
   decayworkfile <- dataset
   
@@ -90,25 +88,29 @@ function (dataset, x, y, plots = FALSE)
   
   results <- rbind(results, logist_results)
   
-  plot(decayworkfile[[x]], decayworkfile[[y]], xlab=x, ylab=y, pch=20, col="black", 
-       main="Distance decay functions")
+  
+  if (plotFunc == TRUE)
+  {
+    plot(decayworkfile[[x]], decayworkfile[[y]], xlab=x, ylab=y, pch=20, col="black", 
+         main="Distance decay functions")
 
-  x_val <- seq(min(decayworkfile[[x]]), max(decayworkfile[[x]]))
+    x_val <- seq(min(decayworkfile[[x]]), max(decayworkfile[[x]]))
 
-  lin_y_p <- lin_intercept+lin_slope*x_val
-  lines(x_val, lin_y_p, col="orange", lwd=1.5)
-  
-  pow_y_p <- pow_intercept*x_val^pow_slope
-  lines(x_val, pow_y_p, col="green", lwd=1.5)
-  
-  expo_y_p <- expo_intercept*exp(expo_slope*x_val)
-  lines(x_val, expo_y_p, col="red", lwd=1.5)
-  
-  logist_y_p <- (y_limit/(1+exp(logist_intercept+logist_slope*x_val)))
-  lines(x_val, logist_y_p, type="l", col="blue", lwd=1.5)
-  
-  legend ("topright", c("Linear", "Power", "Exponential", "Logistic"), lty=c(1,1), 
-          col=c("orange","green", "red", "blue"), cex=0.8)
+    lin_y_p <- lin_intercept+lin_slope*x_val
+    lines(x_val, lin_y_p, col="orange", lwd=1.5)
+    
+    pow_y_p <- pow_intercept*x_val^pow_slope
+    lines(x_val, pow_y_p, col="green", lwd=1.5)
+    
+    expo_y_p <- expo_intercept*exp(expo_slope*x_val)
+    lines(x_val, expo_y_p, col="red", lwd=1.5)
+    
+    logist_y_p <- (y_limit/(1+exp(logist_intercept+logist_slope*x_val)))
+    lines(x_val, logist_y_p, type="l", col="blue", lwd=1.5)
+    
+    legend ("topright", c("Linear", "Power", "Exponential", "Logistic"), lty=c(1,1), 
+            col=c("orange","green", "red", "blue"), cex=0.8)
+  }
   
   return (results)
   

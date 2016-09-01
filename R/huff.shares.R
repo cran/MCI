@@ -1,5 +1,7 @@
 huff.shares <-
-function (huffdataset, origins, locations, attrac, dist, gamma = 1, lambda = -2, atype= "pow", dtype= "pow", gamma2 = NULL, lambda2 = NULL, check_df = TRUE)
+function (huffdataset, origins, locations, attrac, dist,    
+                         gamma = 1, lambda = -2, atype= "pow", dtype= "pow", 
+                         gamma2 = NULL, lambda2 = NULL, check_df = TRUE)
 {   
   
   if (check_df == TRUE)

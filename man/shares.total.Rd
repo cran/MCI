@@ -17,7 +17,7 @@ check_df = TRUE)
 
 \arguments{
   \item{mcidataset}{
-an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers, the market shares and a variable for the local market potential (e.g. purchasing power, number of customers, population or another type of demand)
+an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers, the market shares and a variable for the local market potential (e.g. purchasing power, number of customers, population)
 }
   \item{submarkets}{
 the column in the interaction matrix \code{mcidataset} containing the submarkets
@@ -46,7 +46,7 @@ logical argument that indicates if the input (dataset, column names) is checked 
 }
 
 \details{
-In the MCI model the dependent variable is the market share of the \eqn{j} suppliers in the \eqn{i} submarkets (\eqn{p_{ij}}), in which the shares are \emph{logically consistent} (that means: 0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}). If the shares are estimated, it is possible to link them to a (local) market potential to estimate the total sales and shares of the given suppliers. In this function, the input dataset, an interaction matrix with (local) market shares, is used for the calculation of total sales (or total number of customers) and total market shares of all \eqn{j} regarded suppliers. Optionally, the function also returns a simple bar plot of the total values. 
+If (local) market shares are observed and estimated, respectively, it is possible to link them to a (local) market potential to estimate the total sales and shares of the given suppliers. In this function, the input dataset (interaction matrix with local market shares) is used for the calculation of total sales (or total number of customers) and total market shares of all \eqn{j} regarded suppliers. Optionally, the function also returns a simple bar plot of the total values. 
 }
 
 \value{

@@ -1,7 +1,6 @@
 mci.shares <-
 function (mcidataset, submarkets, suppliers, ..., mcitrans = "lc", interc = NULL) 
 {   
-
   if (!exists(as.character(substitute(mcidataset)))) 
   {
     stop(paste("Dataset", as.character(substitute(mcidataset))), " not found", call. = FALSE)
@@ -78,6 +77,7 @@ function (mcidataset, submarkets, suppliers, ..., mcitrans = "lc", interc = NULL
   
   else
   {  
+  
 
   for (i in 1:nrow(mcivarsweigths))
   {

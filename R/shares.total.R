@@ -1,5 +1,7 @@
 shares.total <-
-function (mcidataset, submarkets, suppliers, shares, localmarket, plotChart = FALSE, plotChart.title = "Total sales", plotChart.unit = "sales", check_df = TRUE)   
+function (mcidataset, submarkets, suppliers, shares, localmarket,   
+                          plotChart = FALSE, plotChart.title = "Total sales", 
+                          plotChart.unit = "sales", check_df = TRUE)   
 
 {
   
