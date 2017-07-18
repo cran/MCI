@@ -1,4 +1,4 @@
-abefab0fe61dff40d78364febe66b01b *DESCRIPTION
+a0793ba2699848fdfa0f64a2aff11f70 *DESCRIPTION
 d5897e87d99f26557238d395b8d25640 *NAMESPACE
 ba39f772881c4a86ac7f91763653618b *R/checkdf.R
 cbb4055f4accd043a558557ad17f23fd *R/checkvar.R
@@ -28,6 +28,7 @@ c6fdba0cf88b2fc072e5388af607a19e *R/var.asdummy.R
 6a9579f5b5207fa32c7c2c1af8e48320 *data/shopping2.rda
 6f3765c23b9d0a1a13944dbf059a84fa *data/shopping3.rda
 4afdfa00d32e92985aef25f66536d7da *data/shopping4.rda
+b937a6343be62240a7be00c3b616b3cf *inst/CITATION
 6e469e150819cf44fc89d2826fe694c2 *man/Freiburg1.Rd
 a1f40c93dbd21e1c049a0b49377f7082 *man/Freiburg2.Rd
 05dd601fe28a4f63f72cf1d27d8ef25d *man/Freiburg3.Rd
