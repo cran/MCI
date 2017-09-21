@@ -4,9 +4,11 @@
 \title{
 Fitting the Huff model using local optimization of attractivity 
 }
+
 \description{
 This function fits the Huff model with a given interaction matrix by optimizing the attractivity values of suppliers/locations iteratively and calculates the market shares/market areas
 }
+
 \usage{
 huff.fit(huffdataset, origins, locations, attrac, dist, lambda = -2, dtype = "pow", 
 lambda2 = NULL, localmarket_dataset, origin_id, localmarket, location_dataset, 
