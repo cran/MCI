@@ -91,7 +91,7 @@ logical argument that indicates if the given dataset is checked for correct inpu
 }
 
 \details{
-In many cases, only total empirical values of the suppliers/locations (e.g. annual turnover) can be used for market area estimation. This function fits the \emph{Huff model} by estimating the \eqn{lambda} parameter iteratively using an optimization algorithm based on the idea of Klein (1988). The fitting process in the \code{huff.lambda} includes of given number of (\eqn{m}) iterations, while the fit gets better with every iteration, measured using the sum of squared residuals of observed vs. expected total values. The iterative optimization can be done via bisection (see Kaw et al. 2011, ch. 03.03) or "trial and error" (see Fuelop et al. 2011).
+In many cases, only total empirical values of the suppliers/locations (e.g. annual turnover) can be used for market area estimation. This function fits the \emph{Huff model} by estimating the \eqn{\lambda} parameter iteratively using an optimization algorithm based on the idea of Klein (1988). The fitting process in the \code{huff.lambda} includes of given number of iterations, while the fit gets better with every iteration, measured using the sum of squared residuals of observed vs. expected total values. The iterative optimization can be done via bisection (see Kaw et al. 2011, ch. 03.03) or "trial and error" (see Fuelop et al. 2011).
 }
 
 \value{

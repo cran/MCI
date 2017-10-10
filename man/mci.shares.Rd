@@ -10,7 +10,7 @@ This function calculates (local) market shares based on specified explanatory va
 \usage{
 mci.shares(mcidataset, submarkets, suppliers, ..., mcitrans = "lc", interc = NULL)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{mcidataset}{
 an interaction matrix which is a \code{data.frame} containing the submarkets, suppliers and the explanatory variables
